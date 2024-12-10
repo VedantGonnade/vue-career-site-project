@@ -1,3 +1,14 @@
 <template>
-  <h1 class="mt-6 text-center text-6xl">Hello, I am Vedant</h1>
+  <mainNav />
 </template>
+
+<script>
+import mainNav from "@/components/mainNav.vue";
+
+export default {
+  name: "App",
+  components: {
+    mainNav,
+  },
+};
+</script>
