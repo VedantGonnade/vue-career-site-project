@@ -19,5 +19,17 @@ export default defineConfig({
   },
   test: {
     globals: true,
+    setupFiles: ["./tests/setup.js"],
+    // isolate: true,
+    // maxConcurrency: 5,
+    // pool: "threads",
+    // css: false,
+    // deps: {
+    //   optimizer: {
+    //     web: {
+    //       enabled: true,
+    //     },
+    //   },
+    // },
   },
 });

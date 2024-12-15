@@ -4,10 +4,7 @@
       <div
         class="border-brand-gray-1 mx-auto flex h-full flex-nowrap border-b border-solid px-8"
       >
-        <a href="/" class="flex h-full items-center text-xl">{{ company }}</a>
-        <h2 class="ml-5 flex h-full items-center">
-          Developed by {{ author.firstName }} {{ author.lastName }}
-        </h2>
+        <a href="/" class="flex h-full items-center text-xl"> {{ company }}</a>
       </div>
     </div>
   </header>
@@ -19,10 +16,6 @@ export default {
   data() {
     return {
       company: "Awesome website",
-      author: {
-        firstName: "Vedant",
-        lastName: "Gonnade",
-      },
     };
   },
 };
