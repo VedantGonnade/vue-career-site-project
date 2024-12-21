@@ -6,7 +6,8 @@
     "plugin:vue/vue3-recommended",
     "eslint:recommended",
     "@vue/eslint-config-prettier",
-    "plugin:vitest-globals/recommended"
+    "plugin:vitest-globals/recommended",
+    "plugin:vue/essential"
   ],
   "parserOptions": {
     "ecmaVersion": "latest"
