@@ -8,13 +8,13 @@
           {{ company }}</a
         >
         <nav class="ml-12 h-full">
-          <ul class="flex h-full items-center">
+          <ul class="flex h-full">
             <li
               v-for="menuItem in menuItems"
               v-bind:key="menuItem"
-              class="ml-7 py-2 font-medium"
+              class="flex h-full ml-9 font-medium first:ml-0"
             >
-              <a href="">{{ menuItem }}</a>
+              <a href="" class="flex h-full items-center py-2">{{ menuItem }}</a>
             </li>
           </ul>
         </nav>
