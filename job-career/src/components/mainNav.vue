@@ -12,9 +12,11 @@
             <li
               v-for="menuItem in menuItems"
               v-bind:key="menuItem"
-              class="flex h-full ml-9 font-medium first:ml-0"
+              class="ml-9 flex h-full font-medium first:ml-0"
             >
-              <a href="" class="flex h-full items-center py-2">{{ menuItem }}</a>
+              <a href="" class="flex h-full items-center py-2">{{
+                menuItem
+              }}</a>
             </li>
           </ul>
         </nav>
