@@ -1,6 +1,6 @@
 <template>
   <header class="w-full text-sm">
-    <div class="fixed left-0 top-0 h-16 w-full bg-white">
+    <div class="fixed left-0 top-0 h-16 w-full bg-white font-medium">
       <div
         class="mx-auto flex h-full flex-nowrap border-b border-solid border-brand-gray-1 px-8"
       >
@@ -12,7 +12,7 @@
             <li
               v-for="menuItem in menuItems"
               v-bind:key="menuItem"
-              class="ml-9 flex h-full font-medium first:ml-0"
+              class="ml-9 flex h-full first:ml-0"
             >
               <a href="" class="flex h-full items-center py-2">{{
                 menuItem
@@ -20,12 +20,17 @@
             </li>
           </ul>
         </nav>
+        <div class="ml-auto flex h-full items-center">
+          <ActionButton />
+        </div>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+import ActionButton from "@/components/actionButton.vue";
+
 export default {
   name: "mainNav",
   data() {
@@ -41,6 +46,9 @@ export default {
         "Jobs",
       ],
     };
+  },
+  components: {
+    ActionButton,
   },
 };
 </script>
