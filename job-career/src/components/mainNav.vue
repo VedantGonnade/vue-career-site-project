@@ -22,7 +22,7 @@
         </nav>
         <div class="ml-auto flex h-full items-center">
           <ProfileImage v-if="isLoggedIn"/>
-          <ActionButton v-else/>
+          <ActionButton v-else @click="loginUser"/>
         </div>
       </div>
     </div>
@@ -49,6 +49,11 @@ export default {
       ],
       isLoggedIn: false,
     };
+  },
+  methods: {
+    loginUser() {
+      this.isLoggedIn = true;
+    },
   },
   components: {
     ActionButton,
