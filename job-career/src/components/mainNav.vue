@@ -21,8 +21,8 @@
           </ul>
         </nav>
         <div class="ml-auto flex h-full items-center">
-          <ProfileImage v-if="isLoggedIn"/>
-          <ActionButton v-else @click="loginUser"/>
+          <ProfileImage v-if="isLoggedIn" />
+          <ActionButton v-else @click="loginUser" />
         </div>
       </div>
     </div>
@@ -57,7 +57,7 @@ export default {
   },
   components: {
     ActionButton,
-    ProfileImage
+    ProfileImage,
   },
 };
 </script>

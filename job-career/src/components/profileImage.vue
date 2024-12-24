@@ -1,5 +1,9 @@
 <template>
-  <img v-bind:src="profileImage" class="h-8 w-8 rounded-3xl object-contain" />
+  <img
+    v-bind:src="profileImage"
+    class="h-8 w-8 rounded-3xl object-contain"
+    alt="User profile image"
+  />
 </template>
 
 <script>
