@@ -35,7 +35,7 @@ describe("mainNav", () => {
       });
       expect(profileImage).not.toBeInTheDocument();
 
-      const loginButton = screen.getByRole("button", { name: /sign up/i });
+      const loginButton = screen.getByRole("button", { name: /sign in/i });
       await userEvent.click(loginButton);
 
       profileImage = screen.getByRole("img", {
