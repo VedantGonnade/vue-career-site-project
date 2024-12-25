@@ -1,14 +1,12 @@
 <template>
-  <button
-    v-bind:class="buttonClass"
-  >
+  <button :class="buttonClass">
     {{ text }}
   </button>
 </template>
 
 <script>
 export default {
-  name: "actionButton",
+  name: "ActionButton",
   props: ["text"],
   data() {
     return {
@@ -27,10 +25,10 @@ export default {
 
 <style scoped>
 button {
-  @apply rounded-lg px-4 py-2 font-medium; 
+  @apply rounded-lg px-4 py-2 font-medium;
 }
 
-.primary{
-  @apply border-0 bg-brand-blue-1 text-white hover:shadow-blue
+.primary {
+  @apply border-0 bg-brand-blue-1 text-white hover:shadow-blue;
 }
 </style>

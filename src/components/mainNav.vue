@@ -4,14 +4,14 @@
       <div
         class="mx-auto flex h-full flex-nowrap border-b border-solid border-brand-gray-1 px-8"
       >
-        <a v-bind:href="url" class="flex h-full items-center text-xl">
+        <a :href="url" class="flex h-full items-center text-xl">
           {{ company }}</a
         >
         <nav class="ml-12 h-full">
           <ul class="flex h-full">
             <li
               v-for="menuItem in menuItems"
-              v-bind:key="menuItem"
+              :key="menuItem"
               class="ml-9 flex h-full first:ml-0"
             >
               <a href="" class="flex h-full items-center py-2">{{
@@ -34,7 +34,11 @@ import ActionButton from "@/components/actionButton.vue";
 import ProfileImage from "@/components/profileImage.vue";
 
 export default {
-  name: "mainNav",
+  name: "MainNav",
+  components: {
+    ActionButton,
+    ProfileImage,
+  },
   data() {
     return {
       company: "Awesome website",
@@ -54,10 +58,6 @@ export default {
     loginUser() {
       this.isLoggedIn = true;
     },
-  },
-  components: {
-    ActionButton,
-    ProfileImage,
   },
 };
 </script>
