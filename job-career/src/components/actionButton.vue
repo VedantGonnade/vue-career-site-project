@@ -1,6 +1,6 @@
 <template>
   <button
-    class="rounded-lg bg-brand-blue-1 px-4 py-2 text-white hover:shadow-blue"
+    v-bind:class="buttonClass"
   >
     {{ text }}
   </button>
@@ -10,5 +10,27 @@
 export default {
   name: "actionButton",
   props: ["text"],
+  data() {
+    return {
+      primary: true,
+    };
+  },
+  computed: {
+    buttonClass() {
+      return {
+        primary: this.primary,
+      };
+    },
+  },
 };
 </script>
+
+<style scoped>
+button {
+  @apply rounded-lg px-4 py-2 font-medium; 
+}
+
+.primary{
+  @apply border-0 bg-brand-blue-1 text-white hover:shadow-blue
+}
+</style>
