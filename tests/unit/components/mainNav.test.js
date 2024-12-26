@@ -5,14 +5,23 @@ import { describe, expect } from "vitest";
 import userEvent from "@testing-library/user-event";
 
 describe("mainNav", () => {
+  const renderMainNav = () => {
+    render(mainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true,
+        },
+      },
+    });
+  };
   it("it displays company name", () => {
-    render(mainNav);
+    renderMainNav();
     const companyName = screen.getByText("Awesome website");
     expect(companyName).toBeInTheDocument();
   });
 
   it("displays menu items for navigation", () => {
-    render(mainNav);
+    renderMainNav();
     const navigationMenuItems = screen.getAllByRole("listitem");
     const navigationMenuTexts = navigationMenuItems.map(
       item => item.textContent,
@@ -29,7 +38,7 @@ describe("mainNav", () => {
 
   describe("when the user logs in", () => {
     it("not displaying the profileImage", async () => {
-      render(mainNav);
+      renderMainNav();
       let profileImage = screen.queryByRole("img", {
         name: /user profile image/i,
       });
