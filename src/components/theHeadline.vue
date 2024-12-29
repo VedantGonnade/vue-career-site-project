@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import nextElementInList from "@/utils/nextElementInList";
 
 export default {
   name: "TheHeadline",
@@ -16,15 +17,13 @@ export default {
     return {
       action: "Build",
       interval: null,
+      actions: ["Build", "Create", "Design", "Code"],
     };
   },
   computed: {
     changeActionStyle() {
       return {
-        build: this.action === "Build",
-        create: this.action === "Create",
-        design: this.action === "Design",
-        code: this.action === "Code",
+        [this.action.toLowerCase()]: true,
       };
     },
   },
@@ -37,10 +36,7 @@ export default {
   methods: {
     changeAction() {
       this.interval = setInterval(() => {
-        const actions = ["Build", "Create", "Design", "Code"];
-        const actionIndex = actions.indexOf(this.action);
-        const nextActionIndex = (actionIndex + 1) % actions.length;
-        this.action = actions[nextActionIndex];
+        this.action = nextElementInList(this.actions, this.action);
       }, 3000);
     },
   },

@@ -4,13 +4,7 @@ import theSubnav from "@/components/theSubnav.vue";
 import { describe, expect } from "vitest";
 
 describe("theSubnav", () => {
-  it("when user is on the job page", () => {
-    render(theSubnav);
-    const jobCount = screen.getByText("1653");
-    expect(jobCount).toBeInTheDocument();
-  });
-
-  it("when user is not on job page", () => {
+  const renderTheSubnav = onJobResultsPage => {
     render(theSubnav, {
       global: {
         stubs: {
@@ -19,10 +13,19 @@ describe("theSubnav", () => {
       },
       data() {
         return {
-          onJobResultsPage: false,
+          onJobResultsPage,
         };
       },
     });
+  };
+  it("when user is on the job page", () => {
+    renderTheSubnav(true);
+    const jobCount = screen.getByText(/1653/);
+    expect(jobCount).toBeInTheDocument();
+  });
+
+  it("when user is not on job page", () => {
+    renderTheSubnav(false);
     const jobCount = screen.queryByText("1653");
     expect(jobCount).not.toBeInTheDocument();
   });

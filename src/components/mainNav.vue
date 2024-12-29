@@ -44,7 +44,7 @@ export default {
   },
   data() {
     return {
-      company: "Awesome website",
+      company: "Zonal Surf",
       url: "https://careers.google.com",
       menuItems: [
         "Teams",
