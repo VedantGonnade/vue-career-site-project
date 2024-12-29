@@ -14,7 +14,7 @@ export default {
   name: "TheSubnav",
   data() {
     return {
-      onJobResultsPage: true,
+      onJobResultsPage: false,
     };
   },
 };
