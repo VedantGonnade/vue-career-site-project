@@ -4,7 +4,7 @@
       <span :class="changeActionStyle">{{ action }}</span> <br />
       for everyone
     </h1>
-    <h2 class="text-3xl font-light">Find your next job at Zonal Surf</h2>
+    <h2 class="text-3xl font-normal">Find your next job at Zonal Surf</h2>
   </section>
 </template>
 

@@ -1,34 +1,35 @@
 <template>
-  <div class="flex items-center">
-    <div class="flex flex-col">
-      <label class="mb-2 ml-5">Role</label>
+  <div class="flex h-14 items-center justify-between pt-3">
+    <div class="relative flex h-full flex-1 items-center">
+      <label class="absolute -top-8 left-0 ml-5">Role</label>
       <form
-        class="flex h-12 w-60 items-center rounded-full border border-solid border-brand-gray-3"
+        class="flex h-full w-60 items-center rounded-full border border-solid border-brand-gray-3 focus-within:border-2 focus-within:border-brand-green-1"
       >
         <font-awesome-icon :icon="['fas', 'search']" class="ml-4" />
         <input
           type="text"
-          class="h-full w-full rounded-full px-4 text-brand-gray-1 outline-none"
+          class="h-full w-full rounded-full px-4 text-base font-normal text-slate-700 focus:outline-none"
           placeholder="Software Engineer"
         />
       </form>
     </div>
-    <div class="ml-7 flex flex-col">
-      <label class="mb-2 ml-5">Where?</label>
+    <div class="relative ml-10 flex h-full flex-1 items-center">
+      <label class="absolute -top-8 left-0 ml-5">Where?</label>
       <form
-        class="flex h-12 w-60 items-center rounded-full border border-solid border-brand-gray-3"
+        class="flex h-full w-60 items-center rounded-full border border-solid border-brand-gray-3 focus-within:border-2 focus-within:border-brand-green-1"
       >
-        <font-awesome-icon :icon="['fas', 'search']" class="ml-4" />
+        <font-awesome-icon :icon="['fas', 'location-dot']" class="ml-4" />
         <input
           type="text"
-          class="h-full w-full rounded-full px-4 text-brand-gray-1 outline-none"
+          class="h-full w-full rounded-full px-4 text-base font-normal text-slate-700 focus:outline-none"
           placeholder="Los Angeles"
         />
       </form>
     </div>
-    <div class="ml-7 mt-8">
-      <ActionButton text="Search" class="p-5" />
-    </div>
+    <ActionButton
+      text="Search"
+      class="ml-10 flex h-full flex-1 items-center justify-center rounded-full"
+    />
   </div>
 </template>
 
