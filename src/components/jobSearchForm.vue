@@ -7,6 +7,7 @@
       >
         <font-awesome-icon :icon="['fas', 'search']" class="ml-4" />
         <input
+          v-model="role"
           type="text"
           class="h-full w-full rounded-full px-4 text-base font-normal text-slate-700 focus:outline-none"
           placeholder="Software Engineer"
@@ -20,6 +21,7 @@
       >
         <font-awesome-icon :icon="['fas', 'location-dot']" class="ml-4" />
         <input
+          v-model="location"
           type="text"
           class="h-full w-full rounded-full px-4 text-base font-normal text-slate-700 focus:outline-none"
           placeholder="Los Angeles"
@@ -40,6 +42,9 @@ export default {
   name: "JobSearchForm",
   components: {
     ActionButton,
+  },
+  data() {
+    return { role: "", location: "" };
   },
 };
 </script>

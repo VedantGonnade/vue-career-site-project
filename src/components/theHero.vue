@@ -7,7 +7,13 @@
           <TheHeadline />
           <JobSearchForm />
         </div>
-        <div class="col-span-5 col-start-7"></div>
+        <div class="col-span-5 col-start-7 self-center justify-self-center">
+          <img
+            :src="VueImage"
+            class="h-80 w-80 object-contain"
+            alt="Vue.js logo"
+          />
+        </div>
         <div class="col-span-1 col-start-auto"></div>
       </div>
     </section>
@@ -17,12 +23,18 @@
 <script>
 import TheHeadline from "@/components/theHeadline.vue";
 import JobSearchForm from "@/components/jobSearchForm.vue";
+import VueImage from "@/images/Vue.js_Logo_2.svg.png";
 
 export default {
   name: "TheHero",
   components: {
     TheHeadline,
     JobSearchForm,
+  },
+  data() {
+    return {
+      VueImage,
+    };
   },
 };
 </script>
