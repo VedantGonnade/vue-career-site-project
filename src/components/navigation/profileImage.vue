@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import image from "../images/profile-image.png";
+import image from "@/images/profile-image.png";
 export default {
   name: "ProfileImage",
   data() {

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/vue";
 
-import mainNav from "@/components/mainNav.vue";
+import mainNav from "@/components/navigation/mainNav.vue";
 import { describe, expect } from "vitest";
 import userEvent from "@testing-library/user-event";
 

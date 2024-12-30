@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/vue";
 
-import actionButton from "@/components/actionButton.vue";
+import actionButton from "@/components/shared/actionButton.vue";
 import { describe, expect } from "vitest";
 
 describe("actionButton", () => {

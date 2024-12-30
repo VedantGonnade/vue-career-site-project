@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/vue";
 
-import TheHeadline from "@/components/theHeadline.vue";
+import TheHeadline from "@/components/jobSearch/theHeadline.vue";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { nextTick } from "vue";
 
