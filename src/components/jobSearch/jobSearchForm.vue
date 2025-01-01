@@ -6,12 +6,7 @@
         class="flex h-full w-60 items-center rounded-full border border-solid border-brand-gray-3 focus-within:border-2 focus-within:border-brand-green-1"
       >
         <font-awesome-icon :icon="['fas', 'search']" class="ml-4" />
-        <input
-          v-model="role"
-          type="text"
-          class="h-full w-full rounded-full px-4 text-base font-normal text-slate-700 focus:outline-none"
-          placeholder="Software Engineer"
-        />
+        <TextInput v-model="role" placeholder="Frontend Developer" />
       </form>
     </div>
     <div class="relative ml-10 flex h-full flex-1 items-center">
@@ -20,12 +15,7 @@
         class="flex h-full w-60 items-center rounded-full border border-solid border-brand-gray-3 focus-within:border-2 focus-within:border-brand-green-1"
       >
         <font-awesome-icon :icon="['fas', 'location-dot']" class="ml-4" />
-        <input
-          v-model="location"
-          type="text"
-          class="h-full w-full rounded-full px-4 text-base font-normal text-slate-700 focus:outline-none"
-          placeholder="Los Angeles"
-        />
+        <TextInput v-model="location" placeholder="Los Angeles" />
       </form>
     </div>
     <ActionButton
@@ -37,11 +27,13 @@
 
 <script>
 import ActionButton from "@/components/shared/actionButton.vue";
+import TextInput from "@/components/shared/textInput.vue";
 
 export default {
   name: "JobSearchForm",
   components: {
     ActionButton,
+    TextInput,
   },
   data() {
     return { role: "", location: "" };
