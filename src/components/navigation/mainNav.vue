@@ -4,9 +4,12 @@
       <div
         class="mx-auto flex h-full flex-nowrap border-b border-solid border-brand-gray-1 px-8"
       >
-        <a :href="url" class="flex h-full items-center text-xl">
-          {{ company }}</a
+        <RouterLink
+          :to="{ name: 'Home' }"
+          class="flex h-full items-center text-xl"
         >
+          Zonal Surf
+        </RouterLink>
         <nav class="ml-12 h-full">
           <ul class="flex h-full">
             <li
@@ -49,8 +52,6 @@ export default {
   },
   data() {
     return {
-      company: "Zonal Surf",
-      url: "https://careers.google.com",
       menuItems: [
         "Teams",
         "Locations",

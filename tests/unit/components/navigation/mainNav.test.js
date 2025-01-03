@@ -3,13 +3,16 @@ import { render, screen } from "@testing-library/vue";
 import mainNav from "@/components/navigation/mainNav.vue";
 import { describe, expect } from "vitest";
 import userEvent from "@testing-library/user-event";
+import { RouterLinkStub } from "@vue/test-utils";
 
 describe("mainNav", () => {
   const renderMainNav = () => {
     render(mainNav, {
       global: {
+        // stubbing out the FontAwesomeIcon and RouterLink components ( replacing the actual components with stubs)
         stubs: {
           FontAwesomeIcon: true,
+          RouterLink: RouterLinkStub,
         },
       },
     });
