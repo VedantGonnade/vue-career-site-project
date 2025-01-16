@@ -17,9 +17,11 @@
               :key="menuItem"
               class="ml-9 flex h-full first:ml-0"
             >
-              <a href="" class="flex h-full items-center py-2">{{
-                menuItem
-              }}</a>
+              <RouterLink
+                :to="menuItem.url"
+                class="flex h-full items-center py-2"
+                >{{ menuItem.text }}
+              </RouterLink>
             </li>
           </ul>
         </nav>
@@ -53,12 +55,12 @@ export default {
   data() {
     return {
       menuItems: [
-        "Teams",
-        "Locations",
-        "Life at Bobo Corp",
-        "How we hire",
-        "Students",
-        "Jobs",
+        { text: "Teams", url: "/" },
+        { text: "Locations", url: "/" },
+        { text: "Life at Bobo Corp", url: "/" },
+        { text: "How we hire", url: "/" },
+        { text: "Students", url: "/" },
+        { text: "Jobs", url: "/jobs/results" },
       ],
       isLoggedIn: false,
     };
