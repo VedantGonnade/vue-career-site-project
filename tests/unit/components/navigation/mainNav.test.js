@@ -14,6 +14,11 @@ describe("mainNav", () => {
           FontAwesomeIcon: true,
           RouterLink: RouterLinkStub,
         },
+        mocks: {
+          $route: {
+            name: "JobsResults",
+          },
+        },
       },
     });
   };
