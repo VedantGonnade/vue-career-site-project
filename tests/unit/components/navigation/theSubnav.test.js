@@ -4,28 +4,32 @@ import theSubnav from "@/components/navigation/theSubnav.vue";
 import { describe, expect } from "vitest";
 
 describe("theSubnav", () => {
-  const renderTheSubnav = onJobResultsPage => {
+  const renderTheSubnav = $route => {
     render(theSubnav, {
       global: {
         stubs: {
           FontAwesomeIcon: true,
         },
-      },
-      data() {
-        return {
-          onJobResultsPage,
-        };
+        mocks: {
+          $route,
+        },
       },
     });
   };
   it("when user is on the job page", () => {
-    renderTheSubnav(true);
+    const $route = {
+      name: "JobResults",
+    };
+    renderTheSubnav($route);
     const jobCount = screen.getByText(/1653/);
     expect(jobCount).toBeInTheDocument();
   });
 
   it("when user is not on job page", () => {
-    renderTheSubnav(false);
+    const $route = {
+      name: "Home",
+    };
+    renderTheSubnav($route);
     const jobCount = screen.queryByText("1653");
     expect(jobCount).not.toBeInTheDocument();
   });
