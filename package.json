@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest --environment jsdom",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier . --write --check"
+    "format": "prettier . --write --check",
+    "backend": "json-server db.json"
   },
   "dependencies": {
     "vue": "^3.4.29",
@@ -32,6 +33,7 @@
     "eslint-plugin-vitest-globals": "^1.5.0",
     "eslint-plugin-vue": "^9.23.0",
     "jsdom": "^24.1.0",
+    "json-server": "^1.0.0-beta.3",
     "postcss": "^8.4.49",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.6.9",
