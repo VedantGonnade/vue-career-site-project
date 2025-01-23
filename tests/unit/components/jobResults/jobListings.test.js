@@ -6,27 +6,39 @@ import { describe, expect, it, vi } from "vitest";
 
 vi.mock("axios");
 
+const commonRendering = element => {
+  const $route = {
+    query: {
+      page: "1",
+    },
+  };
+  return render(element, {
+    global: {
+      mocks: {
+        $route,
+      },
+      stubs: {
+        RouterLink: RouterLinkStub,
+      },
+    },
+  });
+};
+
 describe("JobListings", () => {
   it("should render job listings", () => {
     axios.get.mockResolvedValue({
       data: [],
     });
-    render(JobListings);
+    commonRendering(JobListings);
     expect(axios.get).toHaveBeenCalledWith("http://localhost:3000/jobs");
   });
 
-  it("creates a job listing for each job", async () => {
+  it("creates a job listing for first 10 job", async () => {
     axios.get.mockResolvedValue({
       data: Array(15).fill({}),
     });
-    render(JobListings, {
-      global: {
-        stubs: {
-          RouterLink: RouterLinkStub,
-        },
-      },
-    });
+    commonRendering(JobListings);
     const jobListings = await screen.findAllByRole("listitem");
-    expect(jobListings).toHaveLength(15);
+    expect(jobListings).toHaveLength(10);
   });
 });
