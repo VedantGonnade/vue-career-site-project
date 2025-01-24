@@ -8,12 +8,14 @@
       <div>
         <RouterLink
           v-if="previousPage"
+          role="link"
           :to="{ name: 'JobResults', query: { page: previousPage } }"
           class="mx-3 text-sm font-semibold text-brand-blue-1"
           >Previous</RouterLink
         >
         <RouterLink
           v-if="nextPage"
+          role="link"
           :to="{ name: 'JobResults', query: { page: nextPage } }"
           class="mx-3 text-sm font-semibold text-brand-blue-1"
           >Next</RouterLink
@@ -48,7 +50,7 @@ export default {
     },
     nextPage() {
       const nextPage = this.currentPage + 1;
-      const maxpage = this.jobs.length / 10;
+      const maxpage = Math.ceil(this.jobs.length / 10);
       return nextPage <= maxpage ? nextPage : undefined;
     },
     displayedJobs() {
