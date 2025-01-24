@@ -35,7 +35,7 @@ describe("JobListings", () => {
     });
     const params = queryParams({});
     commonRendering(params);
-    expect(axios.get).toHaveBeenCalledWith("http://localhost:3000/jobs");
+    expect(axios.get).toHaveBeenCalledWith("http://myfakeapi.com/jobs");
   });
 
   it("creates a job listing for first 10 job", async () => {
