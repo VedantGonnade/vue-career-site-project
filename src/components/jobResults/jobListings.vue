@@ -5,6 +5,20 @@
     </ol>
     <div class="mx-auto mt-8 flex flex-row flex-nowrap">
       <p class="flex-grow text-sm">Page {{ currentPage }}</p>
+      <div>
+        <RouterLink
+          v-if="previousPage"
+          :to="{ name: 'JobResults', query: { page: previousPage } }"
+          class="mx-3 text-sm font-semibold text-brand-blue-1"
+          >Previous</RouterLink
+        >
+        <RouterLink
+          v-if="nextPage"
+          :to="{ name: 'JobResults', query: { page: nextPage } }"
+          class="mx-3 text-sm font-semibold text-brand-blue-1"
+          >Next</RouterLink
+        >
+      </div>
     </div>
   </main>
 </template>
@@ -26,6 +40,16 @@ export default {
   computed: {
     currentPage() {
       return Number.parseInt(this.$route.query.page ?? "1");
+    },
+    previousPage() {
+      const previousPage = this.currentPage - 1;
+      const firstPage = 1;
+      return previousPage >= firstPage ? previousPage : undefined;
+    },
+    nextPage() {
+      const nextPage = this.currentPage + 1;
+      const maxpage = this.jobs.length / 10;
+      return nextPage <= maxpage ? nextPage : undefined;
     },
     displayedJobs() {
       const pageNumber = this.currentPage;
