@@ -4,11 +4,15 @@ import mainNav from "@/components/navigation/mainNav.vue";
 import { describe, expect } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { RouterLinkStub } from "@vue/test-utils";
+import { createTestingPinia } from "@pinia/testing";
+import { useUserStore } from "@/stores/user";
 
 describe("mainNav", () => {
+  const pinia = createTestingPinia();
   const renderMainNav = () => {
     render(mainNav, {
       global: {
+        plugins: [pinia],
         // stubbing out the FontAwesomeIcon and RouterLink components ( replacing the actual components with stubs)
         stubs: {
           FontAwesomeIcon: true,
@@ -47,6 +51,8 @@ describe("mainNav", () => {
   describe("when the user logs in", () => {
     it("not displaying the profileImage", async () => {
       renderMainNav();
+      const userStore = useUserStore();
+      userStore.isLoggedIn = true;
       let profileImage = screen.queryByRole("img", {
         name: /user profile image/i,
       });
