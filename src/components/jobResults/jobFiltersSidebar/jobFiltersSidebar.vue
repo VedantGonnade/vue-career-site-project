@@ -6,19 +6,22 @@
       <div class="flex flex-row justify-between">
         <h3 class="my-4 text-base font-semibold">What do you want to do?</h3>
         <div class="flex items-center text-sm">
-          <actionButton text="Clear Filter" type="secondary" />
+          <ActionButton text="Clear Filter" type="secondary" />
         </div>
       </div>
+      <CollapsibleAccordian />
     </section>
   </div>
 </template>
 
 <script>
-import actionButton from "@/components/shared/actionButton.vue";
+import ActionButton from "@/components/shared/actionButton.vue";
+import CollapsibleAccordian from "@/components/shared/collapsibleAccordian.vue";
 export default {
   name: "JobFiltersSidebar",
   components: {
-    actionButton,
+    ActionButton,
+    CollapsibleAccordian,
   },
 };
 </script>
