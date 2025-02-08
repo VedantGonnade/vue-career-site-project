@@ -2,12 +2,23 @@
   <div
     class="border-brang-gray-1 flex w-96 flex-col border-r border-solid bg-white p-4"
   >
-    This is job filters Side bar
+    <section class="pb-5">
+      <div class="flex flex-row justify-between">
+        <h3 class="my-4 text-base font-semibold">What do you want to do?</h3>
+        <div class="flex items-center text-sm">
+          <actionButton text="Clear Filter" type="secondary" />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
+import actionButton from "@/components/shared/actionButton.vue";
 export default {
   name: "JobFiltersSidebar",
+  components: {
+    actionButton,
+  },
 };
 </script>
