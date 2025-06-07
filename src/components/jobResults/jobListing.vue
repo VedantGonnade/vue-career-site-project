@@ -8,7 +8,7 @@
         <h2 class="mb-2 text-2xl">
           {{ job.title }}
         </h2>
-        <div class="flex flex-row align-middle">
+        <div class="flex flex-row">
           <div class="mr-5">
             <span>{{ job.organization }}</span>
           </div>
