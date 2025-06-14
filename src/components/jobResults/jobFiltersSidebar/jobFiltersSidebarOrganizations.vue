@@ -8,7 +8,14 @@
             :key="organization"
             class="flex h-8 w-1/2 items-center justify-start p-2"
           >
-            <input :id="organization" type="checkbox" class="mr-3" />
+            <input
+              :id="organization"
+              v-model="selectedOrganizations"
+              :value="organization"
+              type="checkbox"
+              class="mr-3"
+              @change="selectOrganization"
+            />
             <label :for="organization" class="text-sm">{{
               organization
             }}</label>
@@ -22,14 +29,27 @@
 <script>
 import CollapsibleAccordian from "@/components/shared/collapsibleAccordian.vue";
 import { useJobsStore, UNIQUE_ORGANIZATION } from "@/stores/jobs";
-import { mapState } from "pinia";
+import { ADD_SELECTED_ORGANIZATION, useUserStore } from "@/stores/user";
+import { mapState, mapActions } from "pinia";
 export default {
   name: "JobFiltersSidebarOrganizations",
   components: {
     CollapsibleAccordian,
   },
+  data() {
+    return {
+      selectedOrganizations: [],
+    };
+  },
   computed: {
     ...mapState(useJobsStore, [UNIQUE_ORGANIZATION]),
+  },
+  methods: {
+    ...mapActions(useUserStore, [ADD_SELECTED_ORGANIZATION]),
+
+    selectOrganization() {
+      this.ADD_SELECTED_ORGANIZATION(this.selectedOrganizations);
+    },
   },
 };
 </script>
