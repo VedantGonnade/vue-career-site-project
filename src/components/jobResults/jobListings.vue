@@ -28,7 +28,11 @@
 <script>
 import JobListing from "@/components/jobResults/jobListing.vue";
 import { mapState, mapActions } from "pinia";
-import { useJobsStore, FETCH_JOBS } from "@/stores/jobs";
+import {
+  useJobsStore,
+  FETCH_JOBS,
+  FILTERED_JOBS_BY_ORGANIZATION,
+} from "@/stores/jobs";
 
 export default {
   name: "JobListings",
@@ -45,18 +49,26 @@ export default {
       return previousPage >= firstPage ? previousPage : undefined;
     },
     ...mapState(useJobsStore, {
-      jobs: "jobs",
+      FILTERED_JOBS_BY_ORGANIZATION,
       nextPage() {
         const nextPage = this.currentPage + 1;
-        const maxpage = Math.ceil(this.jobs.length / 10);
+        const maxpage = Math.ceil(
+          this.FILTERED_JOBS_BY_ORGANIZATION.length / 10,
+        );
         return nextPage <= maxpage ? nextPage : undefined;
       },
       displayedJobs() {
         const pageNumber = this.currentPage;
         const startIndex =
-          Math.min(pageNumber - 1, this.jobs.length / 10 - 1) * 10;
-        const lastIndex = Math.min(startIndex + 10, this.jobs.length);
-        return this.jobs.slice(startIndex, lastIndex);
+          Math.min(
+            pageNumber - 1,
+            this.FILTERED_JOBS_BY_ORGANIZATION.length / 10 - 1,
+          ) * 10;
+        const lastIndex = Math.min(
+          startIndex + 10,
+          this.FILTERED_JOBS_BY_ORGANIZATION.length,
+        );
+        return this.FILTERED_JOBS_BY_ORGANIZATION.slice(startIndex, lastIndex);
       },
     }),
   },
