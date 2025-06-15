@@ -4,9 +4,10 @@ import { useUserStore } from "@/stores/user";
 
 export const FETCH_JOBS = "FETCH_JOBS";
 export const UNIQUE_ORGANIZATION = "UNIQUE_ORGANIZATION";
-export const FILTERED_JOBS_BY_ORGANIZATION = "FILTERED_JOBS_BY_ORGANIZATION";
 export const UNIQUE_JOB_TYPES = "UNIQUE_JOB_TYPES";
-export const FILTERED_JOB_TYPES = "FILTERED_JOB_TYPES";
+export const FILTERED_JOBS = "FILTERED_JOBS";
+export const INCLUDE_JOB_BY_ORGANIZATION = "INCLUDE_JOB_BY_ORGANIZATION";
+export const INCLUDE_JOB_BY_JOB_TYPE = "INCLUDE_JOB_BY_JOB_TYPE";
 
 export const useJobsStore = defineStore("jobs", {
   state: () => ({
@@ -28,18 +29,6 @@ export const useJobsStore = defineStore("jobs", {
       return uniqueOrganizations;
     },
 
-    [FILTERED_JOBS_BY_ORGANIZATION](state) {
-      const userStore = useUserStore();
-
-      if (userStore.selectedOrganization.length === 0) {
-        return state.jobs;
-      }
-
-      return state.jobs.filter(job => {
-        return userStore.selectedOrganization.includes(job.organization);
-      });
-    },
-
     [UNIQUE_JOB_TYPES](state) {
       const uniqueJobTypes = new Set();
       state.jobs.forEach(job => {
@@ -50,16 +39,24 @@ export const useJobsStore = defineStore("jobs", {
       return uniqueJobTypes;
     },
 
-    [FILTERED_JOB_TYPES](state) {
+    [INCLUDE_JOB_BY_ORGANIZATION]: () => job => {
       const userStore = useUserStore();
+      if (userStore.selectedOrganization.length === 0) return true;
 
-      if (userStore.selectedJobTypes.length === 0) {
-        return state.jobs;
-      }
+      return userStore.selectedOrganization.includes(job.organization);
+    },
 
-      return state.jobs.filter(job => {
-        return userStore.selectedJobTypes.includes(job.jobType);
-      });
+    [INCLUDE_JOB_BY_JOB_TYPE]: () => job => {
+      const userStore = useUserStore();
+      if (userStore.selectedJobTypes.length === 0) return true;
+
+      return userStore.selectedJobTypes.includes(job.jobType);
+    },
+
+    [FILTERED_JOBS](state) {
+      return state.jobs
+        .filter(job => this.INCLUDE_JOB_BY_ORGANIZATION(job))
+        .filter(job => this.INCLUDE_JOB_BY_JOB_TYPE(job));
     },
   },
 });
