@@ -9,7 +9,7 @@
             class="flex h-8 w-1/2 items-center justify-start p-2"
           >
             <input
-              :id="jobTyp"
+              :id="jobType"
               v-model="selectedJobTypes"
               :value="jobType"
               type="checkbox"
