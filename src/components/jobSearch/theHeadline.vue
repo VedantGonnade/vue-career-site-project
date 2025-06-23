@@ -36,7 +36,7 @@ export default {
   methods: {
     changeAction() {
       this.interval = setInterval(() => {
-        this.action = nextElementInList(this.actions, this.action);
+        this.action = nextElementInList<string>(this.actions, this.action);
       }, 3000);
     },
   },
