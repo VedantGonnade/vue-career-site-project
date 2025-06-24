@@ -6,14 +6,8 @@
   />
 </template>
 
-<script>
+<script lang="ts" setup>
 import image from "@/images/profile-image.png";
-export default {
-  name: "ProfileImage",
-  data() {
-    return {
-      profileImage: image,
-    };
-  },
-};
+
+const profileImage = image;
 </script>
