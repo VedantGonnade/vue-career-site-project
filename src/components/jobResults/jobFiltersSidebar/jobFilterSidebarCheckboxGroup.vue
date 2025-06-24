@@ -36,7 +36,7 @@ const props = defineProps({
     required: true,
   },
   uniqueValues: {
-    type: Set<string>,
+    type: [Set<string>, Array<string>],
     required: true,
   },
   action: {
@@ -45,7 +45,7 @@ const props = defineProps({
   },
 });
 
-const selectedValues = ref<string>([]);
+const selectedValues = ref<string[]>([]);
 const router = useRouter();
 
 const selectValue = () => {
