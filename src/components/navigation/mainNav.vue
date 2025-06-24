@@ -14,7 +14,7 @@
           <ul class="flex h-full">
             <li
               v-for="menuItem in menuItems"
-              :key="menuItem"
+              :key="menuItem.text"
               class="ml-9 flex h-full first:ml-0"
             >
               <RouterLink
@@ -40,44 +40,31 @@
   </header>
 </template>
 
-<script>
-import { mapState, mapActions } from "pinia";
+<script lang="ts" setup>
 import { useUserStore } from "@/stores/user";
+import { ref, computed } from "vue";
 
 import ActionButton from "@/components/shared/actionButton.vue";
 import ProfileImage from "@/components/navigation/profileImage.vue";
 import TheSubnav from "@/components/navigation/theSubnav.vue";
 
-export default {
-  name: "MainNav",
-  components: {
-    ActionButton,
-    ProfileImage,
-    TheSubnav,
-  },
-  data() {
-    return {
-      menuItems: [
-        { text: "Teams", url: "/teams" },
-        { text: "Locations", url: "/" },
-        { text: "Life at Bobo Corp", url: "/" },
-        { text: "How we hire", url: "/" },
-        { text: "Students", url: "/" },
-        { text: "Jobs", url: "/jobs/results" },
-      ],
-    };
-  },
-  computed: {
-    ...mapState(useUserStore, ["isLoggedIn"]),
-    headerHeightClass() {
-      return {
-        "h-16": !this.isLoggedIn,
-        "h-32": this.isLoggedIn,
-      };
-    },
-  },
-  methods: {
-    ...mapActions(useUserStore, ["login"]),
-  },
-};
+const menuItems = ref([
+  { text: "Teams", url: "/teams" },
+  { text: "Locations", url: "/"},
+  { text: "Life at Bobo Corp", url: "/" },
+  { text: "How we hire", url: "/" },
+  { text: "Students", url: "/" },
+  { text: "Jobs", url: "/jobs/results" },
+]);
+
+const userStore = useUserStore();
+const login = computed(() => userStore.login);
+const isLoggedIn = computed(() => userStore.isLoggedIn);
+
+const headerHeightClass = computed(() => {
+  return {
+    "h-16": !isLoggedIn.value,
+    "h-32": isLoggedIn.value,
+  };
+})
 </script>

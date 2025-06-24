@@ -8,39 +8,32 @@
   </section>
 </template>
 
-<script>
+<script lang="ts" setup>
 import nextElementInList from "@/utils/nextElementInList";
+import { ref, onMounted, onBeforeUnmount, computed } from "vue";
 
-export default {
-  name: "TheHeadline",
-  data() {
-    return {
-      action: "Build",
-      interval: null,
-      actions: ["Build", "Create", "Design", "Code"],
-    };
-  },
-  computed: {
-    changeActionStyle() {
-      return {
-        [this.action.toLowerCase()]: true,
-      };
-    },
-  },
-  created() {
-    this.changeAction();
-  },
-  beforeUnmount() {
-    clearInterval(this.interval);
-  },
-  methods: {
-    changeAction() {
-      this.interval = setInterval(() => {
-        this.action = nextElementInList<string>(this.actions, this.action);
-      }, 3000);
-    },
-  },
+const action = ref("Build");
+const actions = ref(["Build", "Create", "Design", "Code"]);
+const interval = ref<ReturnType<typeof setInterval>>();
+
+const changeActionStyle = computed(() => {
+  return {
+    [action.value.toLowerCase()]: true,
+  };
+});
+
+const changeAction = () => {
+  interval.value = setInterval(() => {
+    action.value = nextElementInList<string>(actions.value, action.value);
+  }, 3000);
 };
+
+onMounted(changeAction);
+onBeforeUnmount(() => {
+  if (interval.value) {
+    clearInterval(interval.value);
+  }
+});
 </script>
 
 <style scoped>
