@@ -5,12 +5,6 @@
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import mainNav from "@/components/navigation/mainNav.vue";
-export default {
-  name: "App",
-  components: {
-    mainNav,
-  },
-};
 </script>

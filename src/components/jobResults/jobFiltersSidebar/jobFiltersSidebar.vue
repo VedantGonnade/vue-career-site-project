@@ -23,7 +23,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { computed } from "vue";
 
 import { useJobsStore } from "@/stores/jobs";

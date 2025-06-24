@@ -24,7 +24,7 @@
   </CollapsibleAccordian>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
@@ -36,7 +36,7 @@ const props = defineProps({
     required: true,
   },
   uniqueValues: {
-    type: Set,
+    type: Set<string>,
     required: true,
   },
   action: {
@@ -45,7 +45,7 @@ const props = defineProps({
   },
 });
 
-const selectedValues = ref([]);
+const selectedValues = ref<string>([]);
 const router = useRouter();
 
 const selectValue = () => {
