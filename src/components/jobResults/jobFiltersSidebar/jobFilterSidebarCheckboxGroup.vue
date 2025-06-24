@@ -1,5 +1,4 @@
 <template>
-  <CollapsibleAccordian :header="header">
     <div class="mt-5">
       <fieldset>
         <ul class="flex flex-row flex-wrap">
@@ -21,20 +20,14 @@
         </ul>
       </fieldset>
     </div>
-  </CollapsibleAccordian>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-
-import CollapsibleAccordian from "@/components/shared/collapsibleAccordian.vue";
+import { useUserStore } from "@/stores/user";
 
 const props = defineProps({
-  header: {
-    type: String,
-    required: true,
-  },
   uniqueValues: {
     type: [Set<string>, Array<string>],
     required: true,
@@ -52,4 +45,13 @@ const selectValue = () => {
   props.action(selectedValues.value);
   router.push({ name: "JobResults" });
 };
+
+const userStore = useUserStore();
+userStore.$onAction(({ after, name }) => {
+  after(() => {
+    if (name === "CLEAR_USER_JOB_FILTERS") {
+      selectedValues.value = [];
+    }
+  });
+});
 </script>
