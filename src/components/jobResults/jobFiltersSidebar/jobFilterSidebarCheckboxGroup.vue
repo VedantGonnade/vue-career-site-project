@@ -1,25 +1,25 @@
 <template>
-    <div class="mt-5">
-      <fieldset>
-        <ul class="flex flex-row flex-wrap">
-          <li
-            v-for="value in uniqueValues"
-            :key="value"
-            class="flex h-8 w-1/2 items-center justify-start p-2"
-          >
-            <input
-              :id="value"
-              v-model="selectedValues"
-              :value="value"
-              type="checkbox"
-              class="mr-3"
-              @change="selectValue"
-            />
-            <label :for="value" class="text-sm">{{ value }}</label>
-          </li>
-        </ul>
-      </fieldset>
-    </div>
+  <div class="mt-5">
+    <fieldset>
+      <ul class="flex flex-row flex-wrap">
+        <li
+          v-for="value in uniqueValues"
+          :key="value"
+          class="flex h-8 w-1/2 items-center justify-start p-2"
+        >
+          <input
+            :id="value"
+            v-model="selectedValues"
+            :value="value"
+            type="checkbox"
+            class="mr-3"
+            @change="selectValue"
+          />
+          <label :for="value" class="text-sm">{{ value }}</label>
+        </li>
+      </ul>
+    </fieldset>
+  </div>
 </template>
 
 <script lang="ts" setup>

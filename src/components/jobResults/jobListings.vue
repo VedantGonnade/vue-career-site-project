@@ -41,7 +41,7 @@ onMounted(jobsStore.FETCH_JOBS);
 onMounted(degreesStore.FETCH_DEGREES);
 
 const currentPage = computed(() => {
-  return Number.parseInt(route.query.page as string ?? "1");
+  return Number.parseInt((route.query.page as string) ?? "1");
 });
 
 const FILTERED_JOBS = computed(() => {

@@ -10,11 +10,13 @@ export const useDegreesStore = defineStore("degrees", () => {
     degrees.value = await getDegrees();
   };
 
-  const UNIQUE_DEGREES = computed(() => degrees.value.map(degree => degree.degree))
+  const UNIQUE_DEGREES = computed(() =>
+    degrees.value.map(degree => degree.degree),
+  );
 
   return {
     degrees,
     FETCH_DEGREES,
-    UNIQUE_DEGREES
+    UNIQUE_DEGREES,
   };
 });

@@ -50,7 +50,7 @@ import TheSubnav from "@/components/navigation/theSubnav.vue";
 
 const menuItems = ref([
   { text: "Teams", url: "/teams" },
-  { text: "Locations", url: "/"},
+  { text: "Locations", url: "/" },
   { text: "Life at Bobo Corp", url: "/" },
   { text: "How we hire", url: "/" },
   { text: "Students", url: "/" },
@@ -66,5 +66,5 @@ const headerHeightClass = computed(() => {
     "h-16": !isLoggedIn.value,
     "h-32": isLoggedIn.value,
   };
-})
+});
 </script>
